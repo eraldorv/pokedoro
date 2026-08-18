@@ -1,9 +1,9 @@
 
 body {
-    background-color: #ffcbcb;
+    background-color: #36d87f;
     
     
-    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 7px, transparent 3.5px);
+    
     
     
     background-size: 24px 24px;
@@ -116,7 +116,7 @@ header ul li {
 }
 
 .cards-pomokais:nth-of-type(1) {
-    background-color: #4dd7f0;
+    background-color: #6ef04d;
     border-right: 5px solid #3b3d46;
     border-bottom: 5px solid #000000;
 }
@@ -128,7 +128,7 @@ header ul li {
 }
 
 .cards-pomokais:nth-of-type(3) {
-    background-color: #c4ff3b;
+    background-color: #3be8ff;
     border-right: 5px solid #3b463d;
     border-bottom: 5px solid #000000;
 }
