@@ -1,139 +1,159 @@
-
 body {
-    background-color: #36d87f;
-    
-    
-    
-    
-    
-    background-size: 24px 24px;
-    background-position: 0 0;
-    
+    background: #780000;
+    background: linear-gradient(100deg, rgba(120, 0, 0, 1) 35%, rgba(152, 3, 3, 1) 97%);
+    box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding-top: 170px; 
 }
 
-header {
+.header {
+    background-color: rgba(0, 0, 0, 0.52);
+    border-bottom: 5px solid white; 
+    position: fixed;
     width: 100%;
+    top: 0;
+    left: 0;                 
+    z-index: 1000;
+    box-sizing: border-box;   
     display: flex;
-    flex-direction: column; 
-    align-items: center;    
-    padding: 20px 0;
+    justify-content: space-between; 
+    align-items: center;            
+    padding: 0 30px;
 }
 
-
-
-.logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%; 
-}
-
-
-.logo img {
-    width: 620px;     
-    height: auto;       
-    max-width: 100%;   
+.header img {
+    height: 90px;                   
+    width: auto;
     display: block;
 }
 
-header ul {
+.header ul {
     list-style: none;
-    margin: 20px 0 0 0;
-    padding: 0;
+    padding: 40px 30px; 
+    margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end; 
+    align-items: center;       
     gap: 20px;
 }
 
-header ul li {
-    background-color: #000000;
+.butaologin a, .butaoregistro a {
+    font-family: Arial, Helvetica, sans-serif;
     color: #ffffff;
-    font-family: "Press Start 2P", system-ui, sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 12px 25px;
-    user-select: none;
-    border: 2px solid #000000;
-    box-shadow: 3px 3px 0px #ffffff;
+    
+   
+    background: linear-gradient(180deg, #9b0000 0%, #780000 50%, #520000 100%);
+    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    padding: 20px 70px;
+    border-radius: 20px;
+
+  
+    border: 3px solid #3b0000;
+    box-shadow: #400000;
+}
+
+.card-index {
+    position: relative; 
+    background: #B2A9A9;
+    background: radial-gradient(circle, rgba(178, 169, 169, 1) 35%, rgba(116, 104, 104, 1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    height: 700px;
+    max-width: 1800px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.card-index img {
+    position: sticky;
+    width: 650px;
+    height: auto;
+    left: 1000px;
+}
+
+.logo img {
+    width: 500px;     
+    height: auto;       
+    max-width: 100%;   
+    display: block;
+    transform: rotate(-1deg);
 }
 
 
+.card-registro {
+    position: absolute;
+    bottom: 210px;
+    left: 200px;
+}
+
 .register {
-    text-align: center;
     width: 300px;
     padding: 30px;
     margin: 20px auto;
 }
 
-.register .campo-input {
+.campo-input {
     font-family: "Press Start 2P", system-ui;
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 5px 0;
     box-sizing: border-box;
-    border: 2px solid #000000;
+    border: 3px solid #780000;
 }
 
-.registro h3 {
+.register .campo-input::placeholder {
+    color: #780000b9;
+    font-size: 9px;
+}
+
+.campo-input button {
+    color: #780000b9;
+}
+
+.container-carrossel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
     justify-content: center;
+    width: 600px;            
+    height: 600px;            
+    margin-left: auto;       
+    margin-right: 50px;
 }
 
-.card-escolher {
-    background-color: #ffffff;
-    border: 3px double #000000;
-    padding: 10px;
-    margin: 20px auto;
-    text-align: center;
+.container-carrossel img {
+    width: 100%;              
+    height: 100%;             
+    object-fit: contain;      
+    display: block; 
+    margin: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
-.the-choice {
-    padding: 10px;
-    margin: 20px auto;
-    text-align: center;
+#pokemon-carrossel {
+    transition: opacity 0.3s ease-in-out;
 }
 
-.cards-pomokais {
-    padding: 20px;
-    max-height: 300px;
-    width: 450px;
-    background-color: #ffffff;
+.botoes-carrossel {
     display: flex;
-    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
     align-items: center;
-    gap: 15px;
-    box-sizing: border-box;
-    margin: 10px auto;
+    margin-top: 15px;
 }
 
-.cards-pomokais img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
+.btn-carrossel.ativo {
+    background-color: #780000;
+    transform: scale(1.2);
 }
 
-.cards-pomokais:nth-of-type(1) {
-    background-color: #6ef04d;
-    border-right: 5px solid #3b3d46;
-    border-bottom: 5px solid #000000;
+.btn-carrossel:hover {
+    background-color: #780000;
 }
-
-.cards-pomokais:nth-of-type(2) {
-    background-color: #ff6333;
-    border-right: 5px solid #463b3b;
-    border-bottom: 5px solid #000000;
-}
-
-.cards-pomokais:nth-of-type(3) {
-    background-color: #3be8ff;
-    border-right: 5px solid #3b463d;
-    border-bottom: 5px solid #000000;
-}
-
-
-.gerenciadortarefas {
-    display: flex;
-    flex-direction: row;

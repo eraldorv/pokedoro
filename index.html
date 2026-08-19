@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomokai</title>
+    <title>Pokedoro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,22 +13,41 @@
 </head>
 <body>
 
-<div class="logo">
-    <img src="img/pomokai.png" alt="Logo do Pomokai">
+<div class="header">
+    <img src="/img/pomoball-ico.png">
+    <ul>
+        <li class="butaologin"><a href="index.html">Login</a></li>
+        <li class="butaoregistro"><a href="registro.html">Registro</a></li>
+    </ul>
 </div>
 
-<div class="registro">
-    <form id="register" class="register">
-        <input type="text" name="username" placeholder="ESCOLHA SEU NOME" required class="campo-input">
 
-        <input type="password" name="password" placeholder="SENHA" required class="campo-input">
+<div class="card-index">
+   
+    <div class="card-registro">
+        <div class="logo">
+            <img src="img/pokedorologo.png" alt="Logo do Pokedoro">
+        </div>
+        <form id="register" class="register">
+            <input type="text" name="username" placeholder="Usuário" required class="campo-input">
+            <input type="password" name="password" placeholder="Senha" required class="campo-input">
+            <input type="password" name="confirm_password" placeholder="Confirmar senha" required class="campo-input">
 
-        <input type="password" name="confirm_password" placeholder="CONFIRMAR SENHA" required class="campo-input">
+            <button type="submit" class="btn-registrar">CRIAR CONTA</button>
+            <a href="escolha.html">entrar sem login...</a>
+        </form>
+    </div>
 
-        <button type="submit" class="btn-registrar">CRIAR CONTA</button>
-    </form>
+    <div class="container-carrossel">
+        <img id="pokemon-carrossel" src="img/charmanderplaceholder.png" alt="Pokémon"> 
+        
+        <div class="botoes-carrossel">
+            <button class="btn-carrossel ativo" onclick="mudarParaImagem(0)"></button>
+            <button class="btn-carrossel" onclick="mudarParaImagem(1)"></button>
+            <button class="btn-carrossel" onclick="mudarParaImagem(2)"></button>
+        </div>
+    </div>
 
-<a href="escolha.html">entrar sem login...</a>
 </div>
 
     <script>
@@ -47,8 +66,61 @@
             }
 
             console.log("Usuário criado:", username);
-            // aqui depois você vai conectar com o backend
+            // BACK END DEPOIS
         });
+
+const imagensPokemon = [
+    "img/charmanderplaceholder.png",
+    "img/charmeleonplaceholder.png",
+    "img/charizardplaceholder.png"
+];
+
+let indiceAtual = 0;
+let temporizador = null;
+
+const imgElemento = document.getElementById("pokemon-carrossel");
+const botoes = document.querySelectorAll(".btn-carrossel");
+
+
+function atualizarCarrossel(novoIndice) {
+    indiceAtual = novoIndice;
+
+   
+    imgElemento.style.opacity = "0";
+
+    setTimeout(() => {
+     
+        imgElemento.src = imagensPokemon[indiceAtual];
+        imgElemento.style.opacity = "1";
+
+    
+        botoes.forEach((btn, index) => {
+            if (index === indiceAtual) {
+                btn.classList.add("ativo");
+            } else {
+                btn.classList.remove("ativo");
+            }
+        });
+    }, 200);
+}
+
+
+function proximaImagem() {
+    let proximo = (indiceAtual + 1) % imagensPokemon.length;
+    atualizarCarrossel(proximo);
+}
+
+function mudarParaImagem(indice) {
+    atualizarCarrossel(indice);
+    reiniciarTemporizador(); 
+}
+
+function reiniciarTemporizador() {
+    clearInterval(temporizador);
+    temporizador = setInterval(proximaImagem, 3000);
+}
+
+reiniciarTemporizador();
     </script>
 
 </body>
