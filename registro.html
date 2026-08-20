@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedoro - Registro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    <img src="/img/pomoball-ico.png" alt="Pomoball Logo">
+    <ul>
+        <li class="butaologin"><a href="index.html">Login</a></li>
+        <li class="butaoregistro"><a href="registro.html">Registro</a></li>
+    </ul>
+</div>
+
+<div class="card-registro-pagina">
+    <div class="box-registro-conteudo">
+        
+        <div class="logo-registro">
+            <img src="img/pokedorologo.png" alt="Logo do Pokedoro">
+        </div>
+
+        <form id="form-criar-conta" class="form-registro">
+            
+            </div>
+
+            <div class="linha-form">
+                <div class="grupo-campo">
+                    <label class="label-registro">Nome</label>
+                    <input type="text" name="nome" placeholder="Digite seu nome" required class="input-registro">
+                </div>
+
+                <div class="grupo-campo">
+                    <label class="label-registro">Sobrenome</label>
+                    <input type="text" name="sobrenome" placeholder="Digite seu sobrenome" required class="input-registro">
+                </div>
+            </div>
+
+            <div class="linha-form">
+                <div class="grupo-campo">
+                    <label class="label-registro">Usuário</label>
+                    <input type="text" name="username" placeholder="Digite seu usuário" required class="input-registro">
+                </div>
+
+                <div class="grupo-campo">
+                    <label class="label-registro">Gênero</label>
+                    <select name="genero" id="select-genero" required class="input-registro select-registro">
+                        <option value="" disabled selected>Selecione...</option>
+                        <option value="homem">Homem</option>
+                        <option value="mulher">Mulher</option>
+                        <option value="nb">Não-binário</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="linha-form" id="box-genero-outro" style="display: none;">
+                <div class="grupo-campo campo-largura-total">
+                    <label class="label-registro">Qual seu gênero?</label>
+                    <input type="text" name="genero_outro" id="input-genero-outro" placeholder="Especifique seu gênero" class="input-registro">
+                </div>
+            </div>
+
+            <div class="linha-form">
+                <div class="grupo-campo campo-largura-total">
+                    <label class="label-registro">E-mail</label>
+                    <input type="email" name="email" placeholder="Digite seu e-mail" required class="input-registro">
+                </div>
+            </div>
+
+            <div class="linha-form">
+                <div class="grupo-campo">
+                    <label class="label-registro">Senha</label>
+                    <input type="password" name="password" placeholder="Digite sua senha" required class="input-registro">
+                </div>
+
+                <div class="grupo-campo">
+                    <label class="label-registro">Confirmar Senha</label>
+                    <input type="password" name="confirm_password" placeholder="Confirme a senha" required class="input-registro">
+                </div>
+            </div>
+<div class="secao-avatar">
+    <div class="avatar-preview-container" id="btn-abrir-modal">
+        <div class="box-sprite preview-sprite">
+            <img id="avatar-selecionado-img" src="img/sprites/treinador1.png" alt="Treinador Selecionado" onerror="this.src='https://via.placeholder.com/64?text=Sprite1'">
+        </div>
+        <span class="btn-trocar-avatar">Mudar Treinador</span>
+    </div>
+
+    <input type="hidden" name="avatar" id="input-avatar-val" value="treinador1">
+</div>
+
+<div id="modal-avatar" class="modal-container">
+    <div class="modal-conteudo">
+        <span class="modal-fechar" id="btn-fechar-modal">&times;</span>
+        <h3 class="modal-titulo">Escolha seu Treinador</h3>
+        
+       <div class="grid-avatares-modal">
+    <label class="item-avatar">
+        <input type="radio" name="avatar_opcoes" value="treinador1" data-img="img/treinadores/1.png" checked>
+        <div class="box-sprite">
+            <img src="img/treinadores/1.png" alt="Treinador 1">
+        </div>
+    </label>
+
+    <label class="item-avatar">
+        <input type="radio" name="avatar_opcoes" value="treinador2" data-img="img/treinadores/2.png">
+        <div class="box-sprite">
+            <img src="img/treinadores/2.png" alt="Treinador 2">
+        </div>
+    </label>
+
+    <label class="item-avatar">
+        <input type="radio" name="avatar_opcoes" value="treinador3" data-img="img/treinadores/3.png">
+        <div class="box-sprite">
+            <img src="img/treinadores/3.png" alt="Treinador 3">
+        </div>
+    </label>
+</div>
+
+        <button type="button" class="btn-confirmar-avatar" id="btn-confirmar-modal">Confirmar Seleção</button>
+    </div>
+</div>
+
+            <button type="submit" class="btn-submeter-registro">CRIAR CONTA</button>
+            
+            <div class="links-registro-auxiliares">
+                <a href="index.html">Já tem uma conta? Faça login</a>
+            </div>
+        </form>
+        
+        
+    </div>
+</div>
+
+<script>
+   
+    const selectGenero = document.getElementById("select-genero");
+    const boxGeneroOutro = document.getElementById("box-genero-outro");
+    const inputGeneroOutro = document.getElementById("input-genero-outro");
+
+    selectGenero.addEventListener("change", function() {
+        if (this.value === "outro") {
+            boxGeneroOutro.style.display = "flex";
+            inputGeneroOutro.required = true;
+        } else {
+            boxGeneroOutro.style.display = "none";
+            inputGeneroOutro.required = false;
+            inputGeneroOutro.value = "";
+        }
+    });
+
+   
+    const form = document.getElementById("form-criar-conta");
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const password = form.password.value;
+        const confirmPassword = form.confirm_password.value;
+
+        if (password !== confirmPassword) {
+            alert("As senhas não coincidem!");
+            return;
+        }
+
+        const dadosRegistro = {
+            avatar: form.avatar.value,
+            nome: form.nome.value,
+            sobrenome: form.sobrenome.value,
+            username: form.username.value,
+            genero: form.genero.value === "outro" ? form.genero_outro.value : form.genero.value,
+            email: form.email.value,
+            password: password
+        };
+
+        console.log("Dados de registro:", dadosRegistro);
+    });
+
+
+const modalAvatar = document.getElementById("modal-avatar");
+const btnAbrirModal = document.getElementById("btn-abrir-modal");
+const btnFecharModal = document.getElementById("btn-fechar-modal");
+const btnConfirmarModal = document.getElementById("btn-confirmar-modal");
+
+const avatarSelecionadoImg = document.getElementById("avatar-selecionado-img");
+const inputAvatarVal = document.getElementById("input-avatar-val");
+
+
+btnAbrirModal.addEventListener("click", function() {
+    modalAvatar.style.display = "flex";
+});
+
+
+btnFecharModal.addEventListener("click", function() {
+    modalAvatar.style.display = "none";
+});
+
+
+window.addEventListener("click", function(event) {
+    if (event.target === modalAvatar) {
+        modalAvatar.style.display = "none";
+    }
+});
+
+
+btnConfirmarModal.addEventListener("click", function() {
+    const radioSelecionado = document.querySelector('input[name="avatar_opcoes"]:checked');
+    if (radioSelecionado) {
+       
+        const imgSrc = radioSelecionado.getAttribute("data-img");
+        avatarSelecionadoImg.src = imgSrc;
+        
+       
+        inputAvatarVal.value = radioSelecionado.value;
+    }
+    modalAvatar.style.display = "none";
+});
+
+</script>
+
+</body>
+</html>
