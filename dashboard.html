@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedoro - Dashboard </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+<link rel="icon" type="image/png" href="/img/pomoball-ico.png">
+<body>
+
+    <div class="header">
+        <img src="/img/pomoball-ico.png" alt="Pomoball Icone">
+        <ul>
+            <li class="butaogen"><a href="dashboard.html">Dashboard</a></li>
+            <li class="butaogen"><a href="pokecamp.html">Campo</a></li>
+            <li class="butaogen"><a href="index.html">Sair</a></li>
+        </ul>
+    </div>
+
+    <div class="card-dashboard">
+        <div class="modal-oak">
+            <div class="modal-oak-conteudo">
+                <h1>Olá! E bem vindo ao MUNDO POKÉMON!</h1>
+                <p>Eu me chamo Carvalho, e sou o que chamam de PROFESSOR POKÉMON...</p>
+                <img src="/img/oakplaceholder.png" alt="Professor Carvalho">
+                <p>Essa é a sua DASHBOARD, onde você acessa o<br>
+                    seu pokedoro e cronometra o seu tempo.<br>
+                    comece a usar para receber pokémons!
+                </p>
+                <button id="fecharoak">COMEÇAR</button>
+            </div>
+        </div>
+
+        <div class="pomodoro">
+            <!-- Tempo do Cronômetro (Começa em 25:00) -->
+            <div id="timer" class="timer-display">25:00</div>
+
+            <!-- Imagem Central do Ovo -->
+            <div class="box-ovo">
+                <img id="ovo-img" src="/img/egg.png" alt="Ovo Pokémon">
+            </div>
+
+            <!-- Controles do Cronômetro -->
+            <div class="controles-pomodoro">
+                <button id="btn-iniciar-pausar" class="btn-pomodoro">Iniciar</button>
+                <button id="btn-resetar" class="btn-pomodoro">Resetar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {  
+            /* ===================================================
+               1. CONTROLE DO MODAL DO PROFESSOR CARVALHO (OAK)
+               =================================================== */
+            const modalOak = document.querySelector('.modal-oak');
+            const btnFecharOak = document.getElementById('fecharoak');
+
+            if (modalOak && btnFecharOak) {
+                btnFecharOak.addEventListener('click', () => {
+                    modalOak.style.display = 'none';
+                });
+            }
+
+            /* ===================================================
+               2. CONTROLE DO CRONÔMETRO POMODORO
+               =================================================== */
+            const timerDisplay = document.getElementById('timer');
+            const btnIniciarPausar = document.getElementById('btn-iniciar-pausar');
+            const btnResetar = document.getElementById('btn-resetar');
+
+            let tempoRestante = 25 * 60; // 25 minutos em segundos
+            let timerId = null;
+            let rodando = false;
+
+            // Atualiza o display visual do tempo
+            function atualizarDisplay() {
+                const minutos = Math.floor(tempoRestante / 60);
+                const segundos = tempoRestante % 60;
+                timerDisplay.textContent = `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+            }
+
+            // Iniciar ou Pausar o Cronômetro
+            btnIniciarPausar.addEventListener('click', () => {
+                if (rodando) {
+                    clearInterval(timerId);
+                    rodando = false;
+                    btnIniciarPausar.textContent = 'Iniciar';
+                } else {
+                    rodando = true;
+                    btnIniciarPausar.textContent = 'Pausar';
+                    timerId = setInterval(() => {
+                        if (tempoRestante > 0) {
+                            tempoRestante--;
+                            atualizarDisplay();
+                        } else {
+                            clearInterval(timerId);
+                            rodando = false;
+                            btnIniciarPausar.textContent = 'Iniciar';
+                            alert('O tempo acabou! Seu ovo está prestes a chocar!');
+                        }
+                    }, 1000);
+                }
+            });
+
+            // Resetar o Cronômetro para 25:00
+            btnResetar.addEventListener('click', () => {
+                clearInterval(timerId);
+                rodando = false;
+                tempoRestante = 25 * 60;
+                btnIniciarPausar.textContent = 'Iniciar';
+                atualizarDisplay();
+            });
+        });
+    </script>
+
+</body>
+
+</html>

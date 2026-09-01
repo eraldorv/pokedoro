@@ -43,7 +43,7 @@ body {
     gap: 20px;
 }
 
-.butaologin a, .butaoregistro a {
+.butaogen a {
     font-family: Arial, Helvetica, sans-serif;
     color: #ffffff;
     text-align: center;
@@ -61,7 +61,7 @@ body {
     text-shadow: 0px -1px 0px #000000;
 }
 
-.butaologin a:hover, .butaoregistro a:hover {
+.butaogen a:hover{
     background: linear-gradient(180deg, #c00000 0%, #a00101 50%, #520000 100%);
 }
 
@@ -477,4 +477,166 @@ body {
     display: block;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+}
+
+.card-dashboard {
+    position: relative; 
+    background: #cfc4c4;
+    background: radial-gradient(circle, rgba(207, 196, 196, 1) 35%, rgba(176, 158, 158, 1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    height: 700px;
+    max-width: 1800px;
+    margin: 20px auto;
+    box-sizing: border-box;
+} /* <-- Chave adicionada aqui */
+
+.modal-oak {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-oak-conteudo {
+    background-color: #B2A9A9;
+    outline: 1px solid #780000;
+    border-top: 1px solid #d3c8c8;
+    border-radius: 5px;
+    padding: 25px 20px;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.modal-oak-conteudo h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #000000;
+    margin: 0 0 10px 0;
+}
+
+.modal-oak-conteudo p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000000;
+    line-height: 1.4;
+    margin: 8px 0;
+}
+
+.modal-oak-conteudo img {
+    width: 150px;
+    height: 220px;
+    object-fit: contain;
+    margin: 10px 0;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#fecharoak {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px 30px;
+    margin-top: 15px;
+    cursor: pointer;
+    text-align: center;
+    background: linear-gradient(180deg, #9b0000 0%, #780000 50%, #520000 100%);
+    outline: 1px solid #3b0000;
+    outline-offset: 0px;
+    border: none;
+    border-top: 1px solid #FF9494;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#fecharoak:hover {
+    background: linear-gradient(180deg, #c00000 0%, #a00101 50%, #520000 100%);
+}
+
+.pomodoro {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 350px;
+    height: 100;
+    margin: 0 auto;
+    z-index: 1;
+    position: relative;
+}
+
+.timer-display {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #400000;
+    text-align: center;
+}
+
+.box-ovo {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-ovo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.controles-pomodoro {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-pomodoro {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    background: linear-gradient(180deg, #9b0000 0%, #780000 50%, #520000 100%);
+    outline: 1px solid #3b0000;
+    outline-offset: 0px;
+    border: none;
+    border-top: 1px solid #FF9494;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+}
+
+.btn-pomodoro:hover {
+    background: linear-gradient(180deg, #c00000 0%, #a00101 50%, #520000 100%);
+}
+
+.modal-oak.escondido {
+    display: none !important;
 }

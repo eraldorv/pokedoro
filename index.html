@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,55 +12,58 @@
         href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 </head>
+<link rel="icon" type="image/png" href="/img/pomoball-ico.png">
 <body>
 
-<div class="header">
-    <img src="/img/pomoball-ico.png">
-    <ul>
-        <li class="butaologin"><a href="index.html">Login</a></li>
-        <li class="butaoregistro"><a href="registro.html">Registro</a></li>
-    </ul>
-</div>
+    <div class="header">
+        <img src="/img/pomoball-ico.png">
+        <ul>
+            <li class="butaogen"><a href="index.html">Login</a></li>
+            <li class="butaogen"><a href="registro.html">Registro</a></li>
+        </ul>
+    </div>
 
 
-<div class="card-index">
-   
-    <div class="card-registro">
-        <div class="logo">
-            <img src="img/pokedorologo.png" alt="Logo do Pokedoro">
+    <div class="card-index">
+
+        <div class="card-registro">
+            <div class="logo">
+                <img src="img/pokedorologo.png" alt="Logo do Pokedoro">
+            </div>
+            <form id="register" class="register">
+                <input type="text" name="username" placeholder="Usuário" required class="campo-input">
+                <input type="password" name="password" placeholder="Senha" required class="campo-input">
+                <input type="password" name="confirm_password" placeholder="Confirmar senha" required
+                    class="campo-input">
+
+                <button type="submit" class="btn-registrar">CRIAR CONTA</button>
+                <a href="dashboard.html">entrar sem login...</a>
+            </form>
         </div>
-        <form id="register" class="register">
-            <input type="text" name="username" placeholder="Usuário" required class="campo-input">
-            <input type="password" name="password" placeholder="Senha" required class="campo-input">
-            <input type="password" name="confirm_password" placeholder="Confirmar senha" required class="campo-input">
 
-            <button type="submit" class="btn-registrar">CRIAR CONTA</button>
-            <a href="escolha.html">entrar sem login...</a>
-        </form>
-    </div>
+        <div class="container-carrossel">
+            <img id="pokemon-carrossel" src="img/charmanderplaceholder.png" alt="Pokémon">
 
-    <div class="container-carrossel">
-        <img id="pokemon-carrossel" src="img/charmanderplaceholder.png" alt="Pokémon"> 
-        
-        <div class="botoes-carrossel">
-            <button class="btn-carrossel ativo" onclick="mudarParaImagem(0)"></button>
-            <button class="btn-carrossel" onclick="mudarParaImagem(1)"></button>
-            <button class="btn-carrossel" onclick="mudarParaImagem(2)"></button>
+            <div class="botoes-carrossel">
+                <button class="btn-carrossel ativo" onclick="mudarParaImagem(0)"></button>
+                <button class="btn-carrossel" onclick="mudarParaImagem(1)"></button>
+                <button class="btn-carrossel" onclick="mudarParaImagem(2)"></button>
+            </div>
         </div>
+        <footer class="footer-pokemon">
+            <div class="footer-conteudo">
+                <p>Este projeto é um trabalho acadêmico/fã-feita sem fins lucrativos.</p>
+                <p>Pokémon e os nomes dos personagens são marcas registradas da <strong>© The Pokémon Company</strong>,
+                    <strong>Nintendo</strong>, <strong>Creatures Inc.</strong> e <strong>GAME FREAK inc.</strong></p>
+                <p class="footer-copy">&copy; 2026 - Desenvolvido para fins de estudo.</p>
+            </div>
+        </footer>
     </div>
-    <footer class="footer-pokemon">
-    <div class="footer-conteudo">
-        <p>Este projeto é um trabalho acadêmico/fã-feita sem fins lucrativos.</p>
-        <p>Pokémon e os nomes dos personagens são marcas registradas da <strong>© The Pokémon Company</strong>, <strong>Nintendo</strong>, <strong>Creatures Inc.</strong> e <strong>GAME FREAK inc.</strong></p>
-        <p class="footer-copy">&copy; 2026 - Desenvolvido para fins de estudo.</p>
-    </div>
-</footer>
-</div>
 
     <script>
         const form = document.getElementById("register");
 
-        form.addEventListener("submit", function(e) {
+        form.addEventListener("submit", function (e) {
             e.preventDefault();
 
             const username = form.username.value;
@@ -75,59 +79,60 @@
             // BACK END DEPOIS
         });
 
-const imagensPokemon = [
-    "img/charmanderplaceholder.png",
-    "img/charmeleonplaceholder.png",
-    "img/charizardplaceholder.png"
-];
+        const imagensPokemon = [
+            "img/charmanderplaceholder.png",
+            "img/charmeleonplaceholder.png",
+            "img/charizardplaceholder.png"
+        ];
 
-let indiceAtual = 0;
-let temporizador = null;
+        let indiceAtual = 0;
+        let temporizador = null;
 
-const imgElemento = document.getElementById("pokemon-carrossel");
-const botoes = document.querySelectorAll(".btn-carrossel");
-
-
-function atualizarCarrossel(novoIndice) {
-    indiceAtual = novoIndice;
-
-   
-    imgElemento.style.opacity = "0";
-
-    setTimeout(() => {
-     
-        imgElemento.src = imagensPokemon[indiceAtual];
-        imgElemento.style.opacity = "1";
-
-    
-        botoes.forEach((btn, index) => {
-            if (index === indiceAtual) {
-                btn.classList.add("ativo");
-            } else {
-                btn.classList.remove("ativo");
-            }
-        });
-    }, 200);
-}
+        const imgElemento = document.getElementById("pokemon-carrossel");
+        const botoes = document.querySelectorAll(".btn-carrossel");
 
 
-function proximaImagem() {
-    let proximo = (indiceAtual + 1) % imagensPokemon.length;
-    atualizarCarrossel(proximo);
-}
+        function atualizarCarrossel(novoIndice) {
+            indiceAtual = novoIndice;
 
-function mudarParaImagem(indice) {
-    atualizarCarrossel(indice);
-    reiniciarTemporizador(); 
-}
 
-function reiniciarTemporizador() {
-    clearInterval(temporizador);
-    temporizador = setInterval(proximaImagem, 3000);
-}
+            imgElemento.style.opacity = "0";
 
-reiniciarTemporizador();
+            setTimeout(() => {
+
+                imgElemento.src = imagensPokemon[indiceAtual];
+                imgElemento.style.opacity = "1";
+
+
+                botoes.forEach((btn, index) => {
+                    if (index === indiceAtual) {
+                        btn.classList.add("ativo");
+                    } else {
+                        btn.classList.remove("ativo");
+                    }
+                });
+            }, 200);
+        }
+
+
+        function proximaImagem() {
+            let proximo = (indiceAtual + 1) % imagensPokemon.length;
+            atualizarCarrossel(proximo);
+        }
+
+        function mudarParaImagem(indice) {
+            atualizarCarrossel(indice);
+            reiniciarTemporizador();
+        }
+
+        function reiniciarTemporizador() {
+            clearInterval(temporizador);
+            temporizador = setInterval(proximaImagem, 3000);
+        }
+
+        reiniciarTemporizador();
     </script>
 
 </body>
+
 </html>
