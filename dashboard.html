@@ -11,8 +11,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <link rel="icon" type="image/png" href="/img/pomoball-ico.png">
+
 <body>
 
     <div class="header">
@@ -39,55 +41,77 @@
         </div>
 
         <div class="pomodoro">
-            <!-- Tempo do Cronômetro (Começa em 25:00) -->
+
             <div id="timer" class="timer-display">25:00</div>
 
-            <!-- Imagem Central do Ovo -->
+
             <div class="box-ovo">
                 <img id="ovo-img" src="/img/egg.png" alt="Ovo Pokémon">
             </div>
 
-            <!-- Controles do Cronômetro -->
+
             <div class="controles-pomodoro">
                 <button id="btn-iniciar-pausar" class="btn-pomodoro">Iniciar</button>
                 <button id="btn-resetar" class="btn-pomodoro">Resetar</button>
             </div>
         </div>
+
+        <div class="notificacao">
+            <div class="notif-card">
+                <h1>Pomodoro iniciado!</h1>
+            </div>
+             <div class="notif-card">
+                <h1>Pomodoro iniciado!</h1>
+            </div>
+             <div class="notif-card">
+                <h1>Pomodoro iniciado!</h1>
+            </div>
+             <div class="notif-card">
+                <h1>Pomodoro iniciado!</h1>
+            </div>
+        </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {  
-            /* ===================================================
-               1. CONTROLE DO MODAL DO PROFESSOR CARVALHO (OAK)
-               =================================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+
             const modalOak = document.querySelector('.modal-oak');
             const btnFecharOak = document.getElementById('fecharoak');
 
+            if (localStorage.getItem('oakModalVisto') === 'true') {
+                if (modalOak) {
+                    modalOak.style.display = 'none';
+                    modalOak.classList.add('escondido');
+                }
+            }
+
             if (modalOak && btnFecharOak) {
                 btnFecharOak.addEventListener('click', () => {
+                    localStorage.setItem('oakModalVisto', 'true');
+
+                    modalOak.classList.add('escondido');
                     modalOak.style.display = 'none';
+                    modalOak.style.pointerEvents = 'none';
                 });
             }
 
-            /* ===================================================
-               2. CONTROLE DO CRONÔMETRO POMODORO
-               =================================================== */
+
             const timerDisplay = document.getElementById('timer');
             const btnIniciarPausar = document.getElementById('btn-iniciar-pausar');
             const btnResetar = document.getElementById('btn-resetar');
 
-            let tempoRestante = 25 * 60; // 25 minutos em segundos
+            let tempoRestante = 25 * 60;
             let timerId = null;
             let rodando = false;
 
-            // Atualiza o display visual do tempo
+
             function atualizarDisplay() {
                 const minutos = Math.floor(tempoRestante / 60);
                 const segundos = tempoRestante % 60;
                 timerDisplay.textContent = `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
             }
 
-            // Iniciar ou Pausar o Cronômetro
+
             btnIniciarPausar.addEventListener('click', () => {
                 if (rodando) {
                     clearInterval(timerId);
@@ -110,7 +134,7 @@
                 }
             });
 
-            // Resetar o Cronômetro para 25:00
+
             btnResetar.addEventListener('click', () => {
                 clearInterval(timerId);
                 rodando = false;
